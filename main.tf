@@ -17,3 +17,12 @@ module "vnet1" {
   dns_servers         = var.dns_servers
   subnets             = var.subnets
 }
+
+module "public_ip1" {
+  source = "./modules/publicIp"
+  name = "az305_public_ip1"
+location = local.location
+resource_group_name = module.resource_group1.resource_group_name
+allocation_method = "dynamic"
+}
+

@@ -18,11 +18,24 @@ module "vnet1" {
   subnets             = var.subnets
 }
 
+module "nsg1" {
+  source = "./modules/network_security_group"
+  name = "az305_nsg1"
+  location= local.location
+  resource_group_name = module.resource_group1.resource_group_name
+  nsg_rules = var.nsg_rules
+}
+
 module "public_ip1" {
   source = "./modules/publicIp"
   name = "az305_public_ip1"
 location = local.location
 resource_group_name = module.resource_group1.resource_group_name
-allocation_method = "dynamic"
+allocation_method = "Dynamic"
 }
-
+/*
+resource "azurerm_subnet_network_security_group_association" "associate" {
+    subnet_id = data.azurerm_subnet.snet[each.key].id
+    network_security_group_id = azurerm_network_security_group.nsg.id
+}
+*/

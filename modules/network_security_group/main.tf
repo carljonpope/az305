@@ -1,6 +1,6 @@
-resource "azurerm_network_security_group" "network_security_group" {
+resource "azurerm_network_security_group" "nsg" {
   name                = var.name
-  location            = var.name
+  location            = var.location
   resource_group_name = var.resource_group_name
 }
 
@@ -20,8 +20,11 @@ resource "azurerm_network_security_rule" "nsgrules" {
     destination_address_prefixes = lookup(each.value, "destination_address_prefixes", null)
     destination_address_prefix = lookup(each.value, "destination_address_prefix", null)
     resource_group_name = var.resource_group_name
-    network_security_group_name = each.value["network_security_group_name"]
-    depends_on = [
-        azurerm_network_security_group.nsgcreation
-    ]
+    network_security_group_name = azurerm_network_security_group.nsg.name
 }
+/*
+resource "azurerm_subnet_network_security_group_association" "associate" {
+    subnet_id = data.azurerm_subnet.snet[each.key].id
+    network_security_group_id = azurerm_network_security_group.nsg.id
+}
+*/

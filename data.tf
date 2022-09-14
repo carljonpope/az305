@@ -1,0 +1,3 @@
+output "Subnetid" {
+    value = 
+}

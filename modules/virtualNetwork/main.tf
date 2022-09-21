@@ -1,10 +1,13 @@
 resource "azurerm_virtual_network" "example" {
-  name                = var.name
+  name                = var.vnet.name
   location            = var.location
   resource_group_name = var.resource_group_name
   address_space       = var.address_space
   dns_servers         = var.dns_servers
+}
 
+
+/*
   dynamic "subnet" {
     for_each = var.subnets
 
@@ -14,5 +17,4 @@ resource "azurerm_virtual_network" "example" {
       security_group = subnet.value.security_group
     }
   }
-
-}
+*/

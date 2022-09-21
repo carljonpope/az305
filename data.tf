@@ -1,3 +1,0 @@
-output "Subnetid" {
-    value = 
-}

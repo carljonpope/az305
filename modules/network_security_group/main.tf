@@ -4,6 +4,14 @@ resource "azurerm_network_security_group" "nsg" {
   resource_group_name = var.resource_group_name
 }
 
+resource "azurerm_subnet_network_security_group_association" "associate" {
+    subnet_id = var.subnet_id
+    network_security_group_id = var.nsg_id
+}
+
+
+
+/*
 resource "azurerm_network_security_rule" "nsgrules" {
     for_each = var.nsg_rules
     name = each.value["name"]
@@ -22,7 +30,7 @@ resource "azurerm_network_security_rule" "nsgrules" {
     resource_group_name = var.resource_group_name
     network_security_group_name = azurerm_network_security_group.nsg.name
 }
-/*
+
 resource "azurerm_subnet_network_security_group_association" "associate" {
     subnet_id = data.azurerm_subnet.snet[each.key].id
     network_security_group_id = azurerm_network_security_group.nsg.id

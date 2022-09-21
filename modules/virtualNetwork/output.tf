@@ -1,4 +1,3 @@
-output "subnetIds" {
- for_each = var.subnets
-    value = 
+output "vnet_name" {
+  value = azurerm_virtual_network.name
 }

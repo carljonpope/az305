@@ -1,0 +1,17 @@
+variable "nic_name" {}
+variable "location" {}
+variable "resource_group_name" {}
+variable "ipconfig_name" {}
+variable "subnet_id" {}
+variable "private_ip_address_allocation" {}
+variable "public_ip_address_id" {}
+variable "vm_name" {}
+variable "size" {}
+variable "admin_password" {}
+variable "admin_username" {}
+variable "publisher" {}
+variable "offer" {}
+variable "sku" {}
+variable "image_version" {}
+variable "caching" {}
+variable "storage_account_type" {}

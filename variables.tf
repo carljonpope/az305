@@ -1,5 +1,9 @@
-variable "vnet1" {}
+variable "vnet01" {}
 
-variable "subnet1_address_prefixes" {}
+variable "subnet01_address_prefixes" {}
 
-variable "nsg1_rule1" {}
+variable "nsg01_rule01" {}
+
+variable "win_vm01" {}
+
+variable "storage_account01" {}
